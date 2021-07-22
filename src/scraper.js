@@ -1,9 +1,5 @@
-const axios = require('axios')
 const cheerio = require('cheerio');
 const got = require('got');
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
-
 
 async function getPriceSneaker(name) {
     try{
