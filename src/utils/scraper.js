@@ -50,4 +50,4 @@ async function getPriceSneaker(name) {
     }
 }
 
-getPriceSneaker()
+getPriceSneaker();
