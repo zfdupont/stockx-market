@@ -1,6 +1,8 @@
 const axios = require('axios')
-const cheerio = require('cheerio')
-const express = require('express')
+const cheerio = require('cheerio');
+const got = require('got');
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
 
 
 async function getPriceSneaker(name) {
@@ -14,29 +16,22 @@ async function getPriceSneaker(name) {
         const shoes = {};
 
         // Url to be scraped
-        const siteUrl = 'stockx.com/' + name
+        const siteUrl = 'https://stockx.com/' + name
+        console.log(siteUrl)
 
-        // Axios scrapes the data 
-        const data = await axios({
-            method: "GET",
-            url : siteUrl, 
-        })
+        // Got scrapes the data 
+         const info = await got(siteUrl)
+         const data = info.body.toString();
 
         // Constant used by cheerio to find the data we want from the scraped axios data
-        const priceSelector = '#root > div.wrapper.css-1bwwf5m-AppContainer.e1ut6imt0 > div.page-container.css-4qyi6t-BannerPaddingWrapper > div.chakra-container.new-product-view.css-vp2g1e > section:nth-child(3) > div.css-gg4vpm > div.css-0 > div.buy-sell-container.css-12zjcx7 > div.chakra-stack.buy-sell-buttons-desktop.css-12vwdz3 > div:nth-child(1) > div > dl > dd'
-        const sellSelector = '#root > div.wrapper.css-1bwwf5m-AppContainer.e1ut6imt0 > div.page-container.css-4qyi6t-BannerPaddingWrapper > div.chakra-container.new-product-view.css-vp2g1e > section:nth-child(3) > div.css-gg4vpm > div.css-0 > div.buy-sell-container.css-12zjcx7 > div.chakra-stack.buy-sell-buttons-desktop.css-12vwdz3 > div:nth-child(3) > div > dl > dd'
-        
+        const Elem = '#root > div.wrapper.css-1bwwf5m-AppContainer.e1ms8ude0 > div.page-container.css-4qyi6t-BannerPaddingWrapper > div.chakra-container.new-product-view.css-vp2g1e > section:nth-child(3) > div.css-gg4vpm > div.css-0 > div.buy-sell-container.css-qt7qal > div.chakra-stack.buy-sell-buttons-desktop.css-12vwdz3 > div:nth-child(1) > div > dl'
         // Cheerio loads this data into a readable format
         const $ = cheerio.load(data)
 
         // Using the priceSelector and sellSelector constant cheerio finds all price values on the page and stores that into the object
-        $(priceSelector).each((parentIdx, parentElem) => {
-            shoe.buyPrice = parentElem.text()
-            console.log("Buying price: ", parentElm.text())
-        })
-        $(sellSelector).each((parentIdx, parentElem) => {
-            shoe.sellPrice = parentElem.text()
-            console.log("Selling price: ", parentElem.text())
+        $(Elem).each(function(i, elem){
+            const price = $(elem).text();
+            console.log("This value: ", price)
         })
 
         // Completed shoe object is saved into dictionary
@@ -50,4 +45,4 @@ async function getPriceSneaker(name) {
     }
 }
 
-getPriceSneaker()
+getPriceSneaker('air-jordan-1-retro-high-electro-orange')
