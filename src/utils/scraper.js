@@ -1,6 +1,6 @@
-const axios = require('axios')
-const cheerio = require('cheerio')
-const express = require('express')
+const axios = require('axios');
+const cheerio = require('cheerio');
+const express = require('express');
 
 
 async function getPriceSneaker(name) {
