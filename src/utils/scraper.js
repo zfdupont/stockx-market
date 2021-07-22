@@ -20,15 +20,12 @@ async function getPriceSneaker(name) {
          const data = info.body.toString();
 
         // Constant used by cheerio to find the data we want from the scraped axios data
-        const Elem = '#root > div.wrapper.css-1bwwf5m-AppContainer.e1ms8ude0 > div.page-container.css-4qyi6t-BannerPaddingWrapper > div.chakra-container.new-product-view.css-vp2g1e > section:nth-child(3) > div.css-gg4vpm > div.css-0 > div.buy-sell-container.css-qt7qal > div.chakra-stack.buy-sell-buttons-desktop.css-12vwdz3 > div:nth-child(1) > div > dl'
+        const Elem = '#root > div.wrapper.css-1bwwf5m-AppContainer.e1ms8ude0 > div.page-container.css-4qyi6t-BannerPaddingWrapper > div.chakra-container.new-product-view.css-vp2g1e > section:nth-child(3) > div.css-gg4vpm > div.css-0 > div.buy-sell-container.css-qt7qal > div.chakra-stack.buy-sell-buttons-desktop.css-12vwdz3 > div:nth-child(1) > div > dl > dd'
         // Cheerio loads this data into a readable format
         const $ = cheerio.load(data)
 
         // Using the priceSelector and sellSelector constant cheerio finds all price values on the page and stores that into the object
-        $(Elem).each(function(i, elem){
-            const price = $(elem).text();
-            console.log("This value: ", price)
-        })
+        console.log('Price: ', $(Elem))
 
         // Completed shoe object is saved into dictionary
         shoes[name] = shoe;
