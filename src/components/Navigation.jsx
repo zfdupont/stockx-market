@@ -4,10 +4,10 @@ import { Link, withRouter } from "react-router-dom"
 function Navigation(props){
     return (
         <div className="navigation">
-            <nav>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container">
                     <Link class="navbar-brand" to="/">
-                        React Multi-Page Website
+                        Stockx Market
                     </Link>
 
                     <div>
