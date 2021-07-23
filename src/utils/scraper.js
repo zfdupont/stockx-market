@@ -5,7 +5,7 @@ async function getPriceSneaker(name) {
     try{
         // Dictionary that holds shoe objects name -> shoe object
         const shoes = [];
-        
+
         //Returns an array of products
         const productList = await stockX.newSearchProducts(name);
 
@@ -20,6 +20,7 @@ async function getPriceSneaker(name) {
             shoe.size = variants[i].size;
             shoe.buyPrice = variants[i].market.lowestAsk;
             shoe.sellPrice = variants[i].market.highestBid;
+            shoe.marketPrice = variants[i].market.lastSale;
             if(shoe.buyPrice == 0){
                 shoe.buyPrice = 'N/A'
             }
