@@ -5,11 +5,7 @@ async function getPriceSneaker(name) {
     try{
         // Dictionary that holds shoe objects name -> shoe object
         const shoes = [];
-
-        // Url to be scraped
-        const siteUrl = 'https://stockx.com/' + name
-        console.log(siteUrl)
-
+        
         //Returns an array of products
         const productList = await stockX.newSearchProducts(name);
 
