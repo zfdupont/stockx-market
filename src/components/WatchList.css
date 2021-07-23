@@ -52,3 +52,21 @@
     float:left;
     margin-left: -117px;
 }
+#view-lists button{
+    margin-left: 10px;
+    width: 70px;
+    background: #282c34;
+    border-bottom: #282c34 3px solid;
+    border-left: #282c34 1px solid;
+    border-right: #282c34 1px solid;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    float: right;
+    margin-top: -2px;
+    font-size: 12px;
+    font-weight: 800
+}
+#view-lists button:hover {
+    opacity: 0.8;
+  }

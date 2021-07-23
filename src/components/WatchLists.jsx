@@ -1,5 +1,6 @@
 import React from "react";
 import './WatchList.css';
+
 function WatchLists() {
     return (
         <div className="lists">
@@ -17,8 +18,8 @@ function WatchLists() {
                             <option value = ""> View 2 </option>
                             <option value = ""> View 3 </option>
                         </select>
-                        
-                    </div>
+                        <button type = "button">Manage</button>
+                        </div>
                 </div>
             </div>
         </div>
