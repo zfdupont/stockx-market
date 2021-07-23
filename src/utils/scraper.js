@@ -1,34 +1,42 @@
-const cheerio = require('cheerio');
-const got = require('got');
+const StockXAPI = require('stockx-api');
+const stockX = new StockXAPI();
 
 async function getPriceSneaker(name) {
     try{
-        //Shoe object that holds name, buy price, and sell price
-        const shoe = new Object();
-        shoe.name = name;
-
         // Dictionary that holds shoe objects name -> shoe object
-        const shoes = {};
+        const shoes = [];
 
         // Url to be scraped
         const siteUrl = 'https://stockx.com/' + name
         console.log(siteUrl)
 
-        // Got scrapes the data 
-         const info = await got(siteUrl)
-         const data = info.body.toString();
+        //Returns an array of products
+        const productList = await stockX.newSearchProducts(name);
 
-        // Cheerio loads this data into a readable format
-        const $ = cheerio.load(data)
-        // Using the priceSelector and sellSelector constant cheerio finds all price values on the page and stores that into the object
-        console.log('Price:', $('dd').text())
-        var price = $('dd').text();
-        console.log('Size:', $('dt').text())
-        var size = $('dt').text();
-        // Completed shoe object is saved into dictionary
-        shoes[name] = shoe;
+        //Fetch variants and product details of the first product
+        const product = await stockX.fetchProductDetails(productList[0]);
+        const variants = product.variants
 
-        return shoes 
+        //Iterates through each size and stores their values into a shoe object which is saved into a shoes array
+        for (let i = 0; i < variants.length; i++){
+            shoe = new Object();
+            shoe.name = name;
+            shoe.size = variants[i].size;
+            shoe.buyPrice = variants[i].market.lowestAsk;
+            shoe.sellPrice = variants[i].market.highestBid;
+            if(shoe.buyPrice == 0){
+                shoe.buyPrice = 'N/A'
+            }
+            if(shoe.sellprice == 0){
+                shoe.sellPrice = 'N/A'
+            }
+            shoes.push(shoe);
+        }
+
+        console.log(shoes)
+
+        return shoes
+
 
 
     } catch(err) {
