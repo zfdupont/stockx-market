@@ -1,5 +1,6 @@
 import React from "react";
 import './WatchList.css';
+import Table from 'react-bootstrap/Table';
 
 function WatchLists() {
     return (
@@ -20,7 +21,21 @@ function WatchLists() {
                         </select>
                         <button type = "button">Manage</button>
                         </div>
-                </div>
+                        <div>
+                            <Table striped bordered hover>
+                            <thead>
+                                 <tr>
+                                    <th>#</th>
+                                    <th>Shoe Name</th>
+                                    <th>Avg. Buy Price</th>
+                                    <th>Sell Price</th>
+                                    <th>Retail Price</th>
+                                    <th>Release Date </th>
+                                </tr>
+                            </thead>   
+                            </Table>
+                        </div>
+                </div> 
             </div>
         </div>
     );
