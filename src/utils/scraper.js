@@ -12,6 +12,7 @@ async function getPriceSneaker(name) {
         //Fetch variants and product details of the first product
         const product = await stockX.fetchProductDetails(productList[0]);
         const variants = product.variants
+        console.log(variants)
 
         //Iterates through each size and stores their values into a shoe object which is saved into a shoes array
         for (let i = 0; i < variants.length; i++){
@@ -21,6 +22,7 @@ async function getPriceSneaker(name) {
             shoe.buyPrice = variants[i].market.lowestAsk;
             shoe.sellPrice = variants[i].market.highestBid;
             shoe.marketPrice = variants[i].market.lastSale;
+            shoe.averagePrice = variants[i].market.averageDeadstockPrice;
             if(shoe.buyPrice == 0){
                 shoe.buyPrice = 'N/A'
             }
@@ -40,5 +42,6 @@ async function getPriceSneaker(name) {
         console.log(err)
     }
 }
+
 
 getPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse')

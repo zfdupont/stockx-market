@@ -1,8 +1,12 @@
 import React from "react";
 import './WatchList.css';
-import Table from 'react-bootstrap/Table';
+import Table from 'react-bootstrap-table';
 
 function WatchLists() {
+    function addShoeToWatchList(){
+        // const name = document.querySelector('#input')
+       // shoes = getPriceSneaker(name)
+    }
     return (
         <div className="lists">
             <div class="container">
@@ -10,8 +14,8 @@ function WatchLists() {
                     <h1>Watch Lists</h1>
                         <form id = "to-do-form">
                             <p id = "shoes"> Your Watchlists</p>
-                            <input type = "text" placeholder = "Enter Shoe Name/SKU"/>
-                            <button type = "Submit">Add</button>
+                            <input type = "text" id = "input" placeholder = "Enter Shoe Name/SKU"/>
+                            <button type = "Submit" onClick = {addShoeToWatchList}>Add</button>
                         </form>
                         <div id = "view-lists">
                         <select>
