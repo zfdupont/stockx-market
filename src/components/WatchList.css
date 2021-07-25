@@ -1,0 +1,72 @@
+
+#to-do-form{
+    text-align: right;
+    background: rgba(235, 234, 234, 0.73);
+}
+#to-do-form input{
+    margin: 5px;
+    text-align: left;
+}
+#to-do-form button{
+    margin-right: 10px;
+    width: 50px;
+    background: #282c34;
+    border-bottom: #282c34 3px solid;
+    border-left: #282c34 1px solid;
+    border-right: #282c34 1px solid;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    float: right;
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 800
+}
+#to-do-form button:hover {
+    opacity: 0.8;
+  }
+#to-do-form button:active {
+    margin-right: 10px;
+    width: 50px;
+    background: #282c34;
+    border-bottom: #282c34 1px solid;
+    border-left: #282c34 1px solid;
+    border-right: #282c34 1px solid;
+    border-radius: 6px;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    margin-top: 2px;
+    float: right;
+  }
+#shoes{
+    padding: 5px;
+    margin-top: 2px;
+    font-size: 12;
+    float:left;
+}
+#view-lists{
+    padding: 5px;
+    margin-top: 2px;
+    font-size: 12;
+    float:left;
+    margin-left: -117px;
+}
+#view-lists button{
+    margin-left: 10px;
+    width: 70px;
+    background: #282c34;
+    border-bottom: #282c34 3px solid;
+    border-left: #282c34 1px solid;
+    border-right: #282c34 1px solid;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    float: right;
+    margin-top: -2px;
+    font-size: 12px;
+    font-weight: 800
+}
+#view-lists button:hover {
+    opacity: 0.8;
+  }
