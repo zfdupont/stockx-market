@@ -1,7 +1,7 @@
 const StockXAPI = require('stockx-api');
 const stockX = new StockXAPI();
 
-async function getPriceSneaker(name) {
+ async function GetPriceSneaker(name) {
     try{
         // Dictionary that holds shoe objects name -> shoe object
         const shoes = [];
@@ -16,13 +16,15 @@ async function getPriceSneaker(name) {
 
         //Iterates through each size and stores their values into a shoe object which is saved into a shoes array
         for (let i = 0; i < variants.length; i++){
-            shoe = new Object();
-            shoe.name = name;
-            shoe.size = variants[i].size;
-            shoe.buyPrice = variants[i].market.lowestAsk;
-            shoe.sellPrice = variants[i].market.highestBid;
-            shoe.marketPrice = variants[i].market.lastSale;
-            shoe.averagePrice = variants[i].market.averageDeadstockPrice;
+            let shoe = {
+                name : name,
+                size : variants[i].size,
+                buyPrice : variants[i].market.lowestAsk,
+                sellPrice : variants[i].market.highestBid,
+                marketPrice : variants[i].market.lastSale,
+                averagePrice : variants[i].market.averageDeadstockPrice
+            };
+
             if(shoe.buyPrice == 0){
                 shoe.buyPrice = 'N/A'
             }
@@ -43,5 +45,4 @@ async function getPriceSneaker(name) {
     }
 }
 
-
-getPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse')
+GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse')
