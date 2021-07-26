@@ -1,7 +1,7 @@
 const StockXAPI = require('stockx-api');
 const stockX = new StockXAPI();
 
-export async function GetPriceSneaker(name) {
+async function GetPriceSneaker(name) {
     try{
         // Dictionary that holds shoe objects name -> shoe object
         const shoes = [];
@@ -42,6 +42,5 @@ export async function GetPriceSneaker(name) {
         console.log(err)
     }
 }
-
 
 GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse')
