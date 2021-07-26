@@ -1,13 +1,13 @@
 import React from "react";
 import './WatchList.css';
-import Table from 'react-bootstrap-table';
+import Table from 'react-bootstrap/Table';
 import {GetPriceSneaker} from '../utils/scraper.js'
 
 function WatchLists() {
-    function AddToList() {
-        const name = document.querySelector('#input');
-        const shoes = GetPriceSneaker(name);
-    }
+        function AddToList() {
+            const name = document.querySelector('#input');
+            const shoes = GetPriceSneaker(name);
+        }
     return (
         <div className="lists">
             <div class="container">
