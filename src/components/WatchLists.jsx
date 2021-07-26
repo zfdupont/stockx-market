@@ -1,8 +1,13 @@
 import React from "react";
 import './WatchList.css';
 import Table from 'react-bootstrap-table';
+import {GetPriceSneaker} from '../utils/scraper.js'
 
 function WatchLists() {
+    function AddToList() {
+        const shoeName = document.querySelector('#input');
+        const shoes = GetPriceSneaker(shoeName)
+    }
     return (
         <div className="lists">
             <div class="container">
@@ -11,7 +16,7 @@ function WatchLists() {
                         <form id = "to-do-form">
                             <p id = "shoes"> Your Watchlists</p>
                             <input type = "text" id = "input" placeholder = "Enter Shoe Name/SKU"/>
-                            <button type = "Submit">Add</button>
+                            <button type = "Submit" onClick = {AddToList}>Add</button>
                         </form>
                         <div id = "view-lists">
                         <select>
