@@ -22,6 +22,16 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, '../client/build')))
 
+//post using form with action = "/api/products" with params for ticker, name, and url
+app.post("/api/products", async (req, res) => {
+    try {
+        let [name, ticker, url] =  [req.params.name, req.params.ticker, req.params.url];
+        await Product.create({name: name, ticker: ticker, url: url});
+        res.send(200)
+    } catch (err) {
+        res.send(500)
+    }
+});
 
 // GET product BY Ticker
 app.get("/api/product/ticker/:id", async (req, res) => {
