@@ -6,7 +6,7 @@ function createUser(e) {
     e.preventDefault()
     const {FirstName, LastName, Username, Email, Password} = e.target.elements
     console.log(e.target.elements)
-    var user = new User({
+    var user = new user({
         firstName : FirstName.value,
         lastName : LastName.value,
         username : Username.value,
@@ -53,3 +53,5 @@ function Register(){
     </form>
     )
 }
+
+export default Register;
