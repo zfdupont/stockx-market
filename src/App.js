@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
-import { Navigation, Orders, Account, WatchLists, Home } from "./components";
+
+import { Navigation, Orders, Account, WatchLists, Home, Login, Register } from "./components";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
