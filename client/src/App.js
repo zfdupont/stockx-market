@@ -15,6 +15,8 @@ function App() {
                     <Route path="/account" exact component={() => <Account />} />
                     <Route path="/watchlists" exact component={() => <WatchLists />} />
                     <Route path="/orders" exact component={() => <Orders />} />
+                    <Route path="/login" exact component={() => <Login />} />
+                    <Route path="/register" exact component={() => <Register />} />
                 </Switch>
             </Router>
         </div>

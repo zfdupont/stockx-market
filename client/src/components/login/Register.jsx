@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css"
-const user = require("../../models/Users");
+const user = require("../models/Users");
 
 function createUser(e) {
     e.preventDefault()
