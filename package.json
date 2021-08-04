@@ -1,4 +1,4 @@
-{
+  {
   "name": "stockx-market",
   "version": "1.0.0",
   "description": "ticker and buyer/seller for stockx",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/zfdupont/stockx-market#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.13.3"
   }
 }
