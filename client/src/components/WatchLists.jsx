@@ -7,6 +7,8 @@ function WatchLists() {
         function AddToList() {
             const name = document.querySelector('#input');
             const shoes = GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse');
+            console.log(shoes)
+            console.log(name)
         }
     return (
         <div className="lists">
