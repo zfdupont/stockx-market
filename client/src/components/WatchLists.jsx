@@ -1,7 +1,13 @@
 import React from "react";
 import './WatchList.css';
+import Table from 'react-bootstrap/Table';
+import {GetPriceSneaker} from '../utils/scraper.js'
 
 function WatchLists() {
+        function AddToList() {
+            const name = document.querySelector('#input');
+            const shoes = GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse');
+        }
     return (
         <div className="lists">
             <div class="container">
@@ -9,8 +15,8 @@ function WatchLists() {
                     <h1>Watch Lists</h1>
                         <form id = "to-do-form">
                             <p id = "shoes"> Your Watchlists</p>
-                            <input type = "text" placeholder = "Enter Shoe Name/SKU"/>
-                            <button type = "Submit">Add</button>
+                            <input type = "text" id = "input" placeholder = "Enter Shoe Name/SKU"/>
+                            <button type = "Submit" onClick = {AddToList}>Add</button>
                         </form>
                         <div id = "view-lists">
                         <select>
@@ -20,7 +26,21 @@ function WatchLists() {
                         </select>
                         <button type = "button">Manage</button>
                         </div>
-                </div>
+                        <div>
+                            <Table striped bordered hover>
+                            <thead>
+                                 <tr>
+                                    <th>#</th>
+                                    <th>Shoe Name</th>
+                                    <th>Avg. Buy Price</th>
+                                    <th>Sell Price</th>
+                                    <th>Retail Price</th>
+                                    <th>Release Date </th>
+                                </tr>
+                            </thead>   
+                            </Table>
+                        </div>
+                </div> 
             </div>
         </div>
     );

@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 const express = require('express');
 
 
-async function getPriceSneaker(name) {
+export async function getPriceSneaker(name) {
     try{
 
         //Shoe object that holds name, buy price, and sell price
