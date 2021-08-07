@@ -5,8 +5,7 @@ import {GetPriceSneaker} from '../utils/scraper.js'
 
 function WatchLists() {
     var shoes = []
-    shoes = GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse');
-    console.log(shoes[0].name)
+    GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse').then((shoes) => console.log(shoes));
         function AddToList() {
             const name = document.querySelector('#input');
             shoes = GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse');

@@ -1,10 +1,11 @@
 const StockXAPI = require('stockx-api');
 const stockX = new StockXAPI();
 
+
 export async function GetPriceSneaker(name) {
     try{
         // Dictionary that holds shoe objects name -> shoe object
-        const shoes = [];
+        var shoes = [];
 
         //Returns an array of products
 
@@ -14,7 +15,7 @@ export async function GetPriceSneaker(name) {
 
         //Iterates through each size and stores their values into a shoe object which is saved into a shoes array
         for (let i = 0; i < variants.length; i++){
-            let shoe = {
+            var shoe = {
                 name : name,
                 size : variants[i].size,
                 buyPrice : variants[i].market.lowestAsk,
@@ -31,8 +32,6 @@ export async function GetPriceSneaker(name) {
             }
             shoes.push(shoe);
         }
-
-
         return shoes
 
     } catch(err) {
