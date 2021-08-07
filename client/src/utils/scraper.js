@@ -7,12 +7,10 @@ export async function GetPriceSneaker(name) {
         const shoes = [];
 
         //Returns an array of products
-        const productList = await stockX.newSearchProducts(name);
 
         //Fetch variants and product details of the first product
-        const product = await stockX.fetchProductDetails(productList[0]);
+        const product = await stockX.fetchProductDetails(name);
         const variants = product.variants
-        console.log(variants)
 
         //Iterates through each size and stores their values into a shoe object which is saved into a shoes array
         for (let i = 0; i < variants.length; i++){
@@ -34,7 +32,6 @@ export async function GetPriceSneaker(name) {
             shoes.push(shoe);
         }
 
-        console.log(shoes)
 
         return shoes
 

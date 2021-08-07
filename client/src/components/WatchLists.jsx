@@ -4,11 +4,12 @@ import Table from 'react-bootstrap/Table';
 import {GetPriceSneaker} from '../utils/scraper.js'
 
 function WatchLists() {
+    var shoes = []
+    shoes = GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse');
+    console.log(shoes[0].name)
         function AddToList() {
             const name = document.querySelector('#input');
-            const shoes = GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse');
-            console.log(shoes)
-            console.log(name)
+            shoes = GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse');
         }
     return (
         <div className="lists">
@@ -38,6 +39,13 @@ function WatchLists() {
                                     <th>Sell Price</th>
                                     <th>Retail Price</th>
                                     <th>Release Date </th>
+                                </tr>
+                                <tr>
+                                    <td> shoe[0].name </td>
+                                    <td>shoe[0].averagePrice </td>
+                                    <td> shoe[0].sellPrice </td>
+                                    <td> shoe[0].marketPrice </td>
+                                    <td>NA</td>
                                 </tr>
                             </thead>   
                             </Table>
