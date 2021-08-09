@@ -4,12 +4,18 @@ import Table from 'react-bootstrap/Table';
 import {GetPriceSneaker} from '../utils/scraper.js'
 
 function WatchLists() {
-    var shoes = []
-    GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse').then((shoes) => console.log(shoes));
-        function AddToList() {
-            const name = document.querySelector('#input');
-            shoes = GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse');
-        }
+
+    async function AddToList() {
+        const name = document.querySelector('#input');
+        const shoes = await GetPriceSneaker(name);
+        var node = document.createElement("tr")
+        var size = document.createElement("td")
+        var sizeText = document.createTextNode(shoes[0].size)
+        size.append(sizeText)
+        node.appendChild(size)
+        document.getElementsByID("list").appendChild(node)
+    }
+
     return (
         <div className="lists">
             <div class="container">
@@ -39,14 +45,8 @@ function WatchLists() {
                                     <th>Retail Price</th>
                                     <th>Release Date </th>
                                 </tr>
-                                <tr>
-                                    <td> shoe[0].name </td>
-                                    <td>shoe[0].averagePrice </td>
-                                    <td> shoe[0].sellPrice </td>
-                                    <td> shoe[0].marketPrice </td>
-                                    <td>NA</td>
-                                </tr>
-                            </thead>   
+                            </thead>
+                            <tbody id = "list"></tbody>   
                             </Table>
                         </div>
                 </div> 
