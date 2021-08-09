@@ -9,9 +9,9 @@ const watchListSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    prods:{
-        type: List[str],
-        required: true
+    products:{
+        type: List[String],
+    
     }
 });
 
