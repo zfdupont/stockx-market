@@ -1,53 +1,45 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const express = require('express');
+const StockXAPI = require('stockx-api');
+const stockX = new StockXAPI();
 
 
-async function getPriceSneaker(name) {
+export async function GetPriceSneaker(name) {
     try{
-
-        //Shoe object that holds name, buy price, and sell price
-        const shoe = new Object();
-        shoe.name = name;
-
         // Dictionary that holds shoe objects name -> shoe object
-        const shoes = {};
+        var shoes = [];
 
-        // Url to be scraped
-        const siteUrl = 'stockx.com/' + name
+        //Returns an array of products
 
-        // Axios scrapes the data 
-        const data = await axios({
-            method: "GET",
-            url : siteUrl, 
-        })
+        //Fetch variants and product details of the first product
+        const product = await stockX.fetchProductDetails(name);
+        const variants = product.variants
 
-        // Constant used by cheerio to find the data we want from the scraped axios data
-        const priceSelector = '#root > div.wrapper.css-1bwwf5m-AppContainer.e1ut6imt0 > div.page-container.css-4qyi6t-BannerPaddingWrapper > div.chakra-container.new-product-view.css-vp2g1e > section:nth-child(3) > div.css-gg4vpm > div.css-0 > div.buy-sell-container.css-12zjcx7 > div.chakra-stack.buy-sell-buttons-desktop.css-12vwdz3 > div:nth-child(1) > div > dl > dd'
-        const sellSelector = '#root > div.wrapper.css-1bwwf5m-AppContainer.e1ut6imt0 > div.page-container.css-4qyi6t-BannerPaddingWrapper > div.chakra-container.new-product-view.css-vp2g1e > section:nth-child(3) > div.css-gg4vpm > div.css-0 > div.buy-sell-container.css-12zjcx7 > div.chakra-stack.buy-sell-buttons-desktop.css-12vwdz3 > div:nth-child(3) > div > dl > dd'
-        
-        // Cheerio loads this data into a readable format
-        const $ = cheerio.load(data)
+        //Iterates through each size and stores their values into a shoe object which is saved into a shoes array
+        for (let i = 0; i < variants.length; i++){
+            var shoe = {
+                name : name,
+                size : variants[i].size,
+                buyPrice : variants[i].market.lowestAsk,
+                sellPrice : variants[i].market.highestBid,
+                marketPrice : variants[i].market.lastSale,
+                averagePrice : variants[i].market.averageDeadstockPrice
+            };
 
-        // Using the priceSelector and sellSelector constant cheerio finds all price values on the page and stores that into the object
-        $(priceSelector).each((parentIdx, parentElem) => {
-            shoe.buyPrice = parentElem.text()
-            console.log("Buying price: ", parentElm.text())
-        })
-        $(sellSelector).each((parentIdx, parentElem) => {
-            shoe.sellPrice = parentElem.text()
-            console.log("Selling price: ", parentElem.text())
-        })
-
-        // Completed shoe object is saved into dictionary
-        shoes[name] = shoe;
-
-        return shoes 
-
+            if(shoe.buyPrice === 0){
+                shoe.buyPrice = 'N/A'
+            }
+            if(shoe.sellprice === 0){
+                shoe.sellPrice = 'N/A'
+            }
+            shoes.push(shoe);
+        }
+        return shoes
 
     } catch(err) {
         console.log(err)
     }
 }
 
-getPriceSneaker();
+
+
+
+//GetPriceSneaker('nike-sb-dunk-low-ftc-lagoon-pulse')
